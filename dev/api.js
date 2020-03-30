@@ -13,8 +13,8 @@ app.get('/blockchain', function(req,res){
 });
 
 app.post('/transaction', function(req,res){
-        console.log(req.body);
-        res.send(`O total de grana é ${req.body.ammount}`);
+    const blockIndex = bitcoin.createNewTransaction(req.body.ammount, req.body.sender, req.body.recipient);
+    res.json({note: `transaction will be added ${blockIndex}.`});
 });
 
 app.get('/mine', function(req,res){
